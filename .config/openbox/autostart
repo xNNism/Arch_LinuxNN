@@ -7,15 +7,17 @@
 compton -b --config ~/.config/compton.conf &
 
 ## set displays
-xrandr --output DisplayPort-0 --off --output DVI-1 --mode 1920x1080 --pos 1960x0 --rotate normal --output DVI-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --mode 1920x1080 --pos 0x0 --rotate normal  &
+xrandr --output DVI-D-0 --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DVI-I-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output DVI-I-0 --off --output DP-1 --off --output DP-0 --off &
+
 #########################################################################
-## top tint
-# tint2 -c /home/xnn/.config/tint2/xNN_top.tint2rc &
+##  tint top
+tint2 -c /home/xnn/.config/tint2/xNN_top.tint2rc &
 #
-## bottom tint
-#tint2 -c /home/xnn/.config/tint2/xNN_bottom.tint2rc &
+##  tint bottom
+tint2 -c /home/xnn/.config/tint2/xNN_bottom.tint2rc &
 #########################################################################
-xfce4-panel&
+
+# xfce4-panel &
 
 #thunar starting in daemon mode
 thunar --daemon &
@@ -50,14 +52,14 @@ xfsettingsd &
 
 (sleep 5; nm-applet) &
 
-(sleep 2s && al-conky-session --autostart) &
+#(sleep 2s && al-conky-session --autostart) &
 
 # synergy
 synergys &
 
+# Proxy.sh
+safejumper &
+
 ####################################################################
 conky -c /home/xnn/.config/conky/xNN-clock_bg_topleft.conkyrc &
 conky -c /home/xnn/.config/conky/xNN_Skeleton_xos4.conkyrc &
-
-
-

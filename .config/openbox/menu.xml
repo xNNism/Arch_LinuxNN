@@ -29,18 +29,13 @@
         <command>spotify</command>
       </action>
     </item>
-    <item label="Soundcloud" icon="/mnt/HDD/archlinux/icons/soundcloud.png">
-      <action name="Execute">
-        <command>steam</command>
-      </action>
-    </item>
     <item label="EQualizer" icon="/mnt/HDD/archlinux/icons/eq.png">
       <action name="Execute">
         <execute>/usr/bin/pulseaudio-equalizer-gtk</execute>
       </action>
     </item>
     <separator/>
-    <menu id="accessories" label="Accessories">
+    <menu id="accessories" label="Top10">
       <item label="Alob Themes Manager">
         <action name="Execute">
           <command>al-obthemes</command>
@@ -156,10 +151,10 @@
         </action>
       </item>
     </menu>
-    <menu id="multimedia" label="Multimedia">
-      <item label="Deadbeef">
+    <menu id="audio" label="Audio">
+      <item label="Spotify">
         <action name="Execute">
-          <command>deadbeef</command>
+          <command>spotify</command>
         </action>
       </item>
       <item label="Pulse Audio Preferences">
@@ -167,18 +162,23 @@
           <command>pavucontrol</command>
         </action>
       </item>
-      <item label="SimpleScreenRecorder">
+    </menu>
+    <menu id="video" label="Video">
+      <item label="QMediathekView">
         <action name="Execute">
-          <command>simplescreenrecorder</command>
+          <command>QMediathekView</command>
         </action>
       </item>
-      <item label="Vlc">
+      <item label="VLC">
         <action name="Execute">
           <command>vlc</command>
         </action>
       </item>
-    </menu>
-    <menu id="video" label="Video">
+      <item label="SM-Player">
+        <action name="Execute">
+          <command>smplayer</command>
+        </action>
+      </item>
       <item label="Porntime">
         <action name="Execute">
           <command>/usr/bin/porntime</command>
@@ -189,48 +189,26 @@
           <command>/usr/bin/popcorntime-ce</command>
         </action>
       </item>
-      <menu id="office menu" label="Libre Office">
-        <item label="Libre Office Base">
-          <action name="Execute">
-            <command>libreoffice -base</command>
-          </action>
-        </item>
-        <item label="Libre Office Calc">
-          <action name="Execute">
-            <command>libreoffice -calc</command>
-          </action>
-        </item>
-        <item label="Libre Office Draw">
-          <action name="Execute">
-            <command>libreoffice -draw</command>
-          </action>
-        </item>
-        <item label="Libre Office Impress">
-          <action name="Execute">
-            <command>libreoffice -impress</command>
-          </action>
-        </item>
-        <item label="Libre Office Math">
-          <action name="Execute">
-            <command>libreoffice -math</command>
-          </action>
-        </item>
-        <item label="Libre Office Writer">
-          <action name="Execute">
-            <command>libreoffice -writer</command>
-          </action>
-        </item>
-        <item label="Libre Office Printer Admin">
-          <action name="Execute">
-            <command>libreoffice-printeradmin</command>
-          </action>
-        </item>
-      </menu>
     </menu>
     <menu id="network" label="Network">
       <item label="JDownloader2">
         <action name="Execute">
           <command>jdownloader2</command>
+        </action>
+      </item>
+      <item label="Brave-Browser">
+        <action name="Execute">
+          <command>brave</command>
+        </action>
+      </item>
+      <item label="Google-Chrome">
+        <action name="Execute">
+          <command>google-chrome-stable</command>
+        </action>
+      </item>
+      <item label="Firefox">
+        <action name="Execute">
+          <command>firefox</command>
         </action>
       </item>
       <item label="RealVNC-viewer">
@@ -251,11 +229,6 @@
       <item label="Filezilla">
         <action name="Execute">
           <command>filezilla</command>
-        </action>
-      </item>
-      <item label="Firefox">
-        <action name="Execute">
-          <command>firefox</command>
         </action>
       </item>
       <item label="Transmission">
@@ -486,9 +459,9 @@
         <command>obmenu3</command>
       </action>
     </item>
-    <item label="Nvidia-Settings" icon="/mnt/HDD/archlinux/icons-64x-spotify_black.png">
+    <item label="Monitor-Settings" icon="/mnt/HDD/archlinux/icons-64x-spotify_black.png">
       <action name="Execute">
-        <command>nvidia-settings</command>
+        <command>arandr</command>
       </action>
     </item>
     <item label="reconfigure">
