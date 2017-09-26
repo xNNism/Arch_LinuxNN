@@ -1,3 +1,3 @@
 # archlinux
 
-Installation, configuration, optimization of Arch Linux :fa-star:
+Installation, configuration, optimization of Arch Linux :fa-thumbs-up:
