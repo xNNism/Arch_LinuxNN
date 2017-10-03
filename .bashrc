@@ -42,6 +42,8 @@ export LC_ALL=en_US.UTF-8
 export EDITOR=nano
 export VISUAL=geany
 export TERM=terminator
+export MAKEFLAGS='-j 12'
+
 # Building Android
 ##################################################################
 export ANDROID_HOME=/opt/android-sdk
@@ -87,8 +89,8 @@ alias showmatrix='ncmatrix -b -f -s -C white -I enp14s0 -R red -T red'
 alias speedtest='speedtest-cli'
 # spark when clear
 alias clear='clear; archey3 -c white'
-alias make='make -j 12'        
-
+alias make='make -j12'
+#
 alias ls='ls --color=auto'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
