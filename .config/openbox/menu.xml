@@ -8,6 +8,7 @@
       </action>
     </item>
     <separator/>
+    <separator/>
     <item label="Terminal" icon="/mnt/HDD/archlinux/icons/terminal.png">
       <action name="Execute">
         <command>terminator</command>
@@ -23,6 +24,11 @@
         <command>exo-open --launch filemanager</command>
       </action>
     </item>
+    <item label="PGP">
+      <action name="Execute">
+        <command>gpa</command>
+      </action>
+    </item>
     <separator/>
     <item label="Spotify" icon="/mnt/HDD/archlinux/icons/spotify.png">
       <action name="Execute">
@@ -35,25 +41,92 @@
       </action>
     </item>
     <separator/>
-    <menu id="accessories" label="Top10">
-      <item label="Alob Themes Manager">
+    <separator/>
+    <separator/>
+    <separator/>
+    <menu id="editors" label="Editors">
+      <item label="Geany">
         <action name="Execute">
-          <command>al-obthemes</command>
+          <command>geany</command>
         </action>
       </item>
-      <item label="Archive Manager">
+      <item label="Meld">
         <action name="Execute">
-          <command>file-roller</command>
+          <command>meld</command>
         </action>
       </item>
-      <item label="Heimdall-Frontend">
+      <item label="Sublime">
         <action name="Execute">
-          <command>heimdall-frontend</command>
+          <command>sublime</command>
         </action>
       </item>
-      <item label="Catfish File Search">
+      <item label="Atom">
         <action name="Execute">
-          <command>catfish</command>
+          <command>atom</command>
+        </action>
+      </item>
+      <item label="Haroopad">
+        <action name="Execute">
+          <command>gksu /usr/bin/haroopad</command>
+        </action>
+      </item>
+    </menu>
+    <menu id="accessories" label="Serial">
+      <item label="Putty">
+        <action name="Execute">
+          <command>gksu putty</command>
+        </action>
+      </item>
+      <item label="GTK-Term">
+        <action name="Execute">
+          <command>gksu /usr/bin/gtkterm</command>
+        </action>
+      </item>
+      <item label="moserial">
+        <action name="Execute">
+          <command>gksu /usr/bin/moserial</command>
+        </action>
+      </item>
+      <item label="hterm">
+        <action name="Execute">
+          <command>gksu hterm</command>
+        </action>
+      </item>
+      <item label="ponyprog2000">
+        <action name="Execute">
+          <command>gksu /usr/bin/ponyprog2000</command>
+        </action>
+      </item>
+      <item label="tinyserial">
+        <action name="Execute">
+          <command>gksu com</command>
+        </action>
+      </item>
+      <item label="cutecom">
+        <action name="Execute">
+          <command>gksu /usr/bin/cutecom</command>
+        </action>
+      </item>
+      <item label="EasyTerm">
+        <action name="Execute">
+          <command>gksu /usr/bin/EasyTerm</command>
+        </action>
+      </item>
+    </menu>
+    <menu id="utils" label="Utils">
+      <item label="RECStudio">
+        <action name="Execute">
+          <command>gksu /usr/bin/recstudio</command>
+        </action>
+      </item>
+      <item label="OllyDBG32">
+        <action name="Execute">
+          <command>gksu /usr/bin/ollydbg</command>
+        </action>
+      </item>
+      <item label="EDB">
+        <action name="Execute">
+          <command>gksu edb</command>
         </action>
       </item>
     </menu>
@@ -191,34 +264,25 @@
       </item>
     </menu>
     <menu id="network" label="Network">
-      <item label="JDownloader2">
+      <menu id="new_id" label="Onion"/>
+      <item label="tigervnc">
         <action name="Execute">
-          <command>jdownloader2</command>
+          <command>/usr/bin/vncviewer</command>
         </action>
       </item>
-      <item label="Brave-Browser">
+      <item label="JDownloader">
         <action name="Execute">
-          <command>brave</command>
+          <command>jdownloader</command>
         </action>
       </item>
-      <item label="Google-Chrome">
+      <item label="vncTerminal">
         <action name="Execute">
-          <command>google-chrome-stable</command>
+          <command>gksu terminator  --profile=stayopen --command=/usr/bin/linuxvnc</command>
         </action>
       </item>
       <item label="Firefox">
         <action name="Execute">
           <command>firefox</command>
-        </action>
-      </item>
-      <item label="RealVNC-viewer">
-        <action name="Execute">
-          <command>vncviewer</command>
-        </action>
-      </item>
-      <item label="RealVNC Server">
-        <action name="Execute">
-          <command>/usr/bin/Xvnc</command>
         </action>
       </item>
       <item label="Chromium">
@@ -231,16 +295,16 @@
           <command>filezilla</command>
         </action>
       </item>
-      <item label="Transmission">
+      <item label="torrentTransmission">
         <action name="Execute">
           <command>transmission-gtk</command>
         </action>
       </item>
     </menu>
-    <menu id="root-menu-41448" label="VirtualMachine">
-      <item label="Boxes">
+    <menu id="root-menu-41448" label="VM">
+      <item label="VirtualBox">
         <action name="Execute">
-          <command>Boxes</command>
+          <command>gksu virtualbox</command>
         </action>
       </item>
       <item label="Virt-Manager /KVM">
@@ -259,6 +323,8 @@
         </action>
       </item>
     </menu>
+    <separator/>
+    <separator/>
     <separator/>
     <menu id="preferences" label="Preferences">
       <menu id="obConfig" label="Openbox">
