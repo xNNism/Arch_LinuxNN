@@ -1,4 +1,5 @@
 #!/bin/bash
+#/.bashrc
 #################################################################################################
 #################################################################################################
 #																								#
@@ -11,84 +12,65 @@
 #################################################################################################
 #########  Colorize and add text parameters  ####################################################
 #################################################################################################
-PS1='[\u@\h \W]\$ '
-S1='[\u@\h \W]\$ '
-#
-Red=$(tput setaf 1) # red
-Grn=$(tput setaf 2) # green
-Cya=$(tput setaf 6) # cyan
-Blu=$(tput setaf 4) # blue
-Prpl=$(tput setaf 125) # purple
-White=$(tput setaf 7) # white
-Yellow=$(tput setaf 11) # yellow
+
+red=$(tput setaf 1) # red
+grn=$(tput setaf 2) # green
+cya=$(tput setaf 6) # cyan
 txtbld=$(tput bold) # Bold
-BldRed=${txtbld}$(tput setaf 1) # red
+bldred=${txtbld}$(tput setaf 1) # red
 bldgrn=${txtbld}$(tput setaf 2) # green
 bldblu=${txtbld}$(tput setaf 4) # blue
 bldcya=${txtbld}$(tput setaf 6) # cyan
-BldWhite=${txtbld}$(tput setaf 7) # white
-BldYellow=${txtbld}$(tput setaf 11) # yellow
 txtrst=$(tput sgr0) # Reset
-###################################################################
-# lolcat <filename> for gayness
-##################################################################
-#########  EXPORTS    ############################################
-##################################################################
-#
+
+#################################################################################################
+######### User Info #############################################################################
+export USERNAME="xNNism"
+export NICKNAME="xNN"
+
+
+#################################################################################################
+#########  EXPORTS    ###########################################################################
+#################################################################################################
+
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-#
+
+##################################################################################################
+######### If not running interactively, don't do anythin  ########################################
+
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+PS1='[\u@\h \W]\$ '
+
+###################################################################################################
+########## Include my private bin dir if it exists: ###############################################
+
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+##################################################################################################
+
+export PATH=~/bin:$PATH
+export ANDROID_HOME=/opt/android-sdk
+export JAVA_HOME=/usr/lib/jvm/default
+export LC_ALL=C
 export EDITOR=nano
 export VISUAL=geany
 export TERM=terminator
-export MAKEFLAGS='-j 12'
 
-# Building Android
-##################################################################
-export ANDROID_HOME=/opt/android-sdk
-export LANG=C
-export PATH=~/bin:$PATH
-export PATH=$PATH:/opt/android-sdk/tools/
-export PATH=$PATH:/opt/android-sdk/platform-tools/
-export USE_CCACHE=1
-export CCACHE_DIR=~/.ccache
-export JAVA_HOME=/usr/lib/jvm/default
-# export JAVA_HOME=/usr/lib/jvm/default-runtime
-#
-###################################################################
-export PATH=/usr/local/bin:$PATH
-if [[ -d "$HOME/bin" ]] ; then
-  PATH="$HOME/bin:$PATH"
-fi
-###################################################################
-# make multiple shells share the same history file
-export HISTSIZE=1000            # bash history will save N commands
-export HISTFILESIZE=${HISTSIZE} # bash will remember N commands
-export HISTCONTROL=ignoreboth   # ingore duplicates and spaces
-export HISTIGNORE='&:ls:ll:la:cd:exit:clear:history'
 
-####################    bash options       #######################
-##################################################################
-shopt -s cdspell                 # Correct cd typos
-shopt -s checkwinsize            # Update windows size on command
-shopt -s histappend              # Append History instead of overwriting file
-shopt -s cmdhist                 # Bash attempts to save all lines of a multiple-line command in the same history entry
-shopt -s expand_aliases
-shopt -s extglob                 # Extended pattern
-shopt -s no_empty_cmd_completion # No empty completion
 
-complete -cf sudo
-if [[ -f /etc/bash_completion ]]; then
-  . /etc/bash_completion
-fi
-##################################################################
-#########    ALIAS    ############################################
-##################################################################
+
+#################################################################################################
+#########    ALIAS    ###########################################################################
+#################################################################################################
+
 alias showmatrix='ncmatrix -b -f -s -C white -I enp14s0 -R red -T red'
 alias speedtest='speedtest-cli'
-# spark when clear
-alias clear='clear; archey3 -c white'
 alias make='make -j12'
 #
 alias ls='ls --color=auto'
@@ -98,12 +80,48 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-##################################################################
-#########    FUNCTIONS    ########################################
-##################################################################
-top10() { history | awk '{a[$2]++ } END{for(i in a){print a[i] " " i}}' | sort -rn | head; }
-#
-###################################################################
 
-# Show Systeminformation
-archey3 -c white
+
+
+#################################################################################################
+#########  Welcome Script  ######################################################################
+#################################################################################################
+## DEPENDENCIES:
+## https://github.com/aureooms/myip
+
+######## variables: #############################################################################
+cpu_type=$(lscpu | grep "Model name:" | cut -c 24-)
+cpu_cores=$(lscpu | grep "^CPU(s)" | cut -c 24-)
+block_dev=$(echo -e "${Yellow}Block Devices: \n${Green}$(lsblk | grep "sd." | awk '{print "'${Red}'> '${Green}'"$1" '${Yellow}'Type: '${Green}'"$6" '${Yellow}'Size: '${Green}'"$4" '${Green}'"$7}' | column -t | sed 's/>/    >/')")
+kversion=$(uname -srm)
+shell="$SHELL"
+# private_ip=$(echo -e "$(myip private | head -2 | tail -1)")
+# public_ip=$(echo -e "$(myip public | head -2 | tail -1)")
+gpu_temp=$(echo -e "$(sensors | grep "temp1:" | cut -c 16-22)")
+cpu_temp=$(echo -e "$(sensors | grep "Package id 0:" | cut -c 17-23)")
+# cpu_clock=$(echo -e "$(cpuinfo | grep "Hz Actual:"| cut -c 11-15)")
+# wthr=$(echo -e "$(wego -f emoji -d 1 -location 48.703098,-9.654100 | cut -f 15-)")
+# btc=$(curl https://www.bitstamp.net/api/v2/ticker/btceur/ 2>/dev/null  | sed  's/\,/\n/g' | grep last | awk  -F':' '{print $2}'  | sed 's/\"//g')
+# echo "${red}|btc:${txtrst}$btc€"
+
+######## TERMINAL OUTPUT: #############################################################################
+echo
+echo "${txtbld} @@@@@@@  @@@       @@@@@@   @@@@@@@ @@@  @@@ @@@@@@@  @@@ @@@ @@@@@@@ @@@@@@@  ®2017"${txtrst}
+echo "${txtbld} @@!  @@@ @@!      @@!  @@@ !@@      @@!  !@@ @@!  @@@ @@! !@@   @@!   @@!     	 "${txtrst}
+echo "${txtbld} @!@!@!@  @!!      @!@!@!@! !@!      @!@@!@!  @!@!@!@   !@!@!    @!!   @!!!:!  	 "${txtrst}
+echo "${txtbld} !!:  !!! !!:      !!:  !!! :!!      !!: :!!  !!:  !!!   !!:     !!:   !!:     	 "${txtrst}
+echo "${txtbld} :: : ::  : ::.: :  :   : :  :: :: :  :   ::: :: : ::    .:       :    : :: ::: 	 "${txtrst}
+echo "${txtbld}                                                               	 "${txtrst}
+echo "${red}**************************************************************************************"${txtrst}
+echo "${txtbld}                                                               	 "${txtrst}
+echo "${txtbld}                               ${red}-${txtrst}BLACKBYTE-INC.NET${red}-${txtrst}                                   "${txtrst}
+echo "${txtbld} "${txtrst}
+echo "             ${red}|${txtrst} $kversion ${txtrst} ${red}|${txtrst} CPU: $cpu_temp${red} ${red}|${txtrst} GPU: $gpu_temp${red} ${red}|${txtrst} "${txtrst}
+echo "${red}${txtrst} 		"${txtrst}
+echo "${red}**************************************************************************************"${txtrst}
+echo
+
+
+#################################################################################################
+#########      END        #######################################################################
+#################################################################################################
