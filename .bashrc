@@ -36,6 +36,13 @@ export NICKNAME="xNN"
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export JAVA_HOME=/usr/lib/jvm/default
+export PATH=~/bin:$PATH
+export ANDROID_HOME=/opt/android-sdk
+export LC_ALL=C
+export EDITOR=nano
+export VISUAL=geany
+export TERM=terminator
 
 ##################################################################################################
 ######### If not running interactively, don't do anythin  ########################################
@@ -52,19 +59,6 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-##################################################################################################
-
-export PATH=~/bin:$PATH
-export ANDROID_HOME=/opt/android-sdk
-export JAVA_HOME=/usr/lib/jvm/default
-export LC_ALL=C
-export EDITOR=nano
-export VISUAL=geany
-export TERM=terminator
-
-
-
-
 #################################################################################################
 #########    ALIAS    ###########################################################################
 #################################################################################################
@@ -79,8 +73,6 @@ alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-
-
 
 
 #################################################################################################
