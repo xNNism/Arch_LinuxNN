@@ -29,4 +29,8 @@ sudo cp -r $PWD/Themes/* /usr/share/themes/
 echo "done...installing themes"
 sleep 2 
 
-
+echo "installing Icons..."
+sleep 1
+sudo cp -r $PWD/Icons/* /usr/share/icons/
+echo "done...installing icons"
+sleep 2 
