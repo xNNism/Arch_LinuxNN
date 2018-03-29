@@ -54,65 +54,11 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export JAVA_HOME=/usr/lib/jvm/default
-export PATH=~/bin:$PATH
 export ANDROID_HOME=/opt/android-sdk
 export LC_ALL=C
 export EDITOR=nano
 export VISUAL=geany
-export TERM=terminator
-
-##################################################################################################
-######### If not running interactively, don't do anythin  ########################################
-#
-#[[ $- != *i* ]] && return
-#
-#alias ls='ls --color=auto'
-#PS1='[\u@\h \W]\$ '
-#################################
-
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
-
-#                                   Settings
-
-# TERMCAP Setup
-# enter blinking mode - red
-export LESS_TERMCAP_mb=$(printf '\e[01;31m')
-# enter double-bright mode - bold, magenta
-export LESS_TERMCAP_md=$(printf '\e[01;31m')
-# turn off all appearance modes (mb, md, so, us)
-export LESS_TERMCAP_me=$(printf '\e[0m')
-# leave standout mode
-export LESS_TERMCAP_se=$(printf '\e[0m')
-# enter standout mode - green
-export LESS_TERMCAP_so=$(printf '\e[01;32m')
-# leave underline mode
-export LESS_TERMCAP_ue=$(printf '\e[0m')
-# enter underline mode - blue
-export LESS_TERMCAP_us=$(printf '\e[04;34m')
-
-# Add custom enviroment
-PATH=$PATH:~/Scripts
-
-# PS1 Setup
-PROMPT_COMMAND=__prompt_command
-
-__prompt_command() {
-    local EXITCODE="$?"
-
-    local HOSTCOLOR="1"
-    local USERCOLOR="7"
-    local PATHCOLOR="8"
-
-    PS1="\e[3${HOSTCOLOR}m  \h  \e[3${USERCOLOR}m \u  \e[3${PATHCOLOR}m \w  ";
-
-    if [ $EXITCODE == 0 ]; then
-        PS1+="\e[31m\$ \e[0m";
-    else
-        PS1+="\e[31m\$ \e[0m";
-    fi
-}
-
+export TERM=xterm
 
 ###################################################################################################
 ########## Include my private bin dir if it exists: ###############################################
@@ -121,24 +67,22 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+###################################################################################################
+########## fix for Tilix ##########################################################################
+
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
+
 #################################################################################################
 #########    ALIAS    ###########################################################################
 #################################################################################################
-alias temps="watch sensors"
-alias mhz="watch grep \"cpu MHz\" /proc/cpuinfo"
-alias dd='dd status=progress'
-alias matrix='ncmatrix -b -f -s -C white -I enp13s0 -R red -T red'
-alias speedtest='speedtest-cli'
-alias make='make -j12'
-#
 alias ls='ls --color=auto'
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-
-
 #################################################################################################
 #########  Welcome Script  ######################################################################
 #################################################################################################
