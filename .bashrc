@@ -53,6 +53,7 @@ export NICKNAME="xNN"
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export LD_PRELOAD=""
 export JAVA_HOME=/usr/lib/jvm/default
 export ANDROID_HOME=/opt/android-sdk
 export LC_ALL=C
@@ -73,6 +74,12 @@ fi
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
 fi
+
+###################################################################################################
+########## source files ###########################################################################
+
+[ -r /usr/share/bash-completion/completions ] &&
+  . /usr/share/bash-completion/completions/*
 
 #################################################################################################
 #########    ALIAS    ###########################################################################
