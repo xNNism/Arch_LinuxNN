@@ -1,0 +1,59 @@
+#!/bin/bash
+
+##############################################################################
+#
+#  This software is licensed under the terms of the GNU General Public
+#  License version 2, as published by the Free Software Foundation, and
+#  may be copied, distributed, and modified under those terms.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  Please maintain this if you use this script or any part of it
+#
+##############################################################################
+
+
+## Colorize and add text parameters
+##################################################################################################################################################
+red=$(tput setaf 1) # red
+grn=$(tput setaf 2) # green
+cya=$(tput setaf 6) # cyan
+txtbld=$(tput bold) # Bold
+bldred=${txtbld}$(tput setaf 1) # red
+bldgrn=${txtbld}$(tput setaf 2) # green
+bldblu=${txtbld}$(tput setaf 4) # blue
+bldcya=${txtbld}$(tput setaf 6) # cyan
+txtrst=$(tput sgr0) # Reset
+
+
+## definde variables
+##################################################################################################################################################
+cpu_type=$(lscpu | grep "Model name:" | cut -c 24-)
+cpu_cores=$(lscpu | grep "^CPU(s)" | cut -c 24-)
+block_dev=$(echo -e "${Yellow}Block Devices: \n${Green}$(lsblk | grep "sd." | awk '{print "'${Red}'> '${Green}'"$1" '${Yellow}'Type: '${Green}'"$6" '${Yellow}'Size: '${Green}'"$4" '${Green}'"$7}' | column -t | sed 's/>/    >/')")
+kversion=$(uname -srm)
+shell="$SHELL"
+int_ip=$(echo -e "$(myip private | head -2 | tail -1)")
+ext_ip=$(echo -e "$(myip public | head -2 | tail -1)")
+gpu_temp=$(echo -e "$(sensors | grep "temp1:" | cut -c 16-22)")
+cpu_temp=$(echo -e "$(sensors | grep "Package id 0:" | cut -c 17-23)")
+cpu_clock=$(echo -e "$(cat /proc/cpuinfo | grep "cpu MHz" | cut -c 12-15)")
+## forecast=$(echo -e "$(wego -f emoji -d 1 -location 48.703098,-9.654100 | cut -f 15-)")
+btc=$(curl https://www.bitstamp.net/api/v2/ticker/btceur/ 2>/dev/null  | sed  's/\,/\n/g' | grep last | awk  -F':' '{print $2}'  | sed 's/\"//g')
+
+## output
+##################################################################################################################################################
+echo
+echo "${red}|1 BTC =${txtrst}$btc EUR"
+echo "${bldred}------------------------------------------------"${txtrst}
+echo "${red}|${txtrst}Kernel: ${bldred}$kversion"${txtrst}
+echo "${red}|"${txtrst}
+echo "${red}|${txtrst}ip local:  ${red}$int_ip"${txtrst}
+echo "${red}|${txtrst}ip public: ${red}$ext_ip"${txtrst}
+echo "${bldred}------------------------------------------------"${txtrst}
+echo "${red}|${txtrst}  		"${txtrst}
+echo "${red}|${txtrst}Freq:$cpu_clock GHz ${red}|${txtrst} Core: $cpu_temp${red} ${red}|${txtrst} GPU: $gpu_temp${red} |"${txtrst}
+echo "${bldred}------------------------------------------------"${txtrst}
