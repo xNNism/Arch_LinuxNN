@@ -1,1 +1,0 @@
-#/path/to/netboot.xyz.lkrn/ qemu-system-x86_64 -enable-kvm -m 2G -kernel netboot.xyz.lkrn

@@ -107,27 +107,20 @@ shell="$SHELL"
 gpu_temp=$(echo -e "$(sensors | grep "temp1:" | cut -c 16-22)")
 cpu_temp=$(echo -e "$(sensors | grep "Package id 0:" | cut -c 17-23)")
 # cpu_clock=$(echo -e "$(cpuinfo | grep "Hz Actual:"| cut -c 11-15)")
-# wthr=$(echo -e "$(wego -f emoji -d 1 -location 48.703098,-9.654100 | cut -f 15-)")
 # btc=$(curl https://www.bitstamp.net/api/v2/ticker/btceur/ 2>/dev/null  | sed  's/\,/\n/g' | grep last | awk  -F':' '{print $2}'  | sed 's/\"//g')
 # echo "${red}|btc:${txtrst}$btc€"
 
 ######## TERMINAL OUTPUT: #############################################################################
-echo
-echo "${txtbld}d88PPPo 888      ,8b.     doooooo 888  ,dP d88PPPo 888   88 888888888   ,d8PPPP"${txtrst}
-echo "${txtbld}888ooo8 888      88*8o    d88     888o8P*  888ooo8 888ooo88    *88d     d88ooo "${txtrst}
-echo "${txtbld}888   8 888      88PPY8.  d88     888 Y8L  888   8       88   *888    ,88*     "${txtrst}
-echo "${txtbld}888PPPP 888PPPPP 8b   *Y* d888888 888  *8p 888PPPP PPPPPP8P *88p      88bdPPP  "${txtrst}
-echo "${txtbld} "${txtrst}
-echo "${red}**************************************************************************************"${txtrst}
-echo "${txtbld}                                                               	 "${txtrst}
-echo "${txtbld}                               ${red}-${txtrst}BLACKBYTE-INC.NET${red}-${txtrst}                                   "${txtrst}
-echo "${txtbld} "${txtrst}
-echo "             ${red}|${txtrst} $kversion ${txtrst} ${red}|${txtrst} CPU: $cpu_temp${red} ${red}|${txtrst} GPU: $gpu_temp${red} ${red}|${txtrst} "${txtrst}
-echo "${red}${txtrst} 		"${txtrst}
-echo "${red}**************************************************************************************"${txtrst}
-echo
-
-
+echo ""
+echo ""
+echo "${txtbld} ██████   █████  ███████ ██   ██${txtrst}"
+echo "${txtbld} ██   ██ ██   ██ ██      ██   ██${txtrst}"
+echo "${txtbld} ██████  ███████ ███████ ███████${txtrst}"
+echo "${txtbld} ██   ██ ██   ██      ██ ██   ██${txtrst}"
+echo "${txtbld} ██████  ██   ██ ███████ ██   ██#BITCH ${txtrst}"
+echo ""
+echo "" $bldred $kversion $txtrst
+echo ""
 #################################################################################################
 #########      END        #######################################################################
 #################################################################################################
