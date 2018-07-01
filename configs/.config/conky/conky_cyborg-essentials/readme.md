@@ -1,1 +1,0 @@
-Conky from Cyborg Essentials
