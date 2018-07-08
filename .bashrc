@@ -1,16 +1,9 @@
 #!/bin/bash
-#/.bashrc
-#                       ██████   █████  ███████ ██   ██
-#                       ██   ██ ██   ██ ██      ██   ██
-#                       ██████  ███████ ███████ ███████
-#                       ██   ██ ██   ██      ██ ██   ██
-#                       ██████  ██   ██ ███████ ██   ██
-#################################################################################################
+
 #########  Colorize and add text parameters  ####################################################
 #################################################################################################
-
 #	Colors:
-
+#
 #  BLACK=	'\e[0;30m'
 #  RED=		'\e[0;31m'
 #  GREEN=	'\e[0;32m'
@@ -19,7 +12,7 @@
 #  MAGENT=	'\e[0;35m'
 #  CYAN=	'\e[0;36m'
 #  WHITE=	'\e[0;37m'
-
+#
 #  LIGHTBLACK=	'\e[1;30m'
 #  LIGHTRED=	'\e[1;31m'
 #  LIGHTGREEN=	'\e[1;32m'
@@ -28,7 +21,6 @@
 #  LIGHTMAGENT= '\e[1;35m'
 #  LIGHTCYAN=	'\e[1;36m'
 #  LIGHTWHITE=	'\e[1;37m'
-
 
 red=$(tput setaf 1) # red
 grn=$(tput setaf 2) # green
@@ -42,25 +34,24 @@ txtrst=$(tput sgr0) # Reset
 
 #################################################################################################
 ######### User Info #############################################################################
+
 export USERNAME="xNNism"
 export NICKNAME="xNN"
-
-
 #################################################################################################
+
 #########  EXPORTS    ###########################################################################
 #################################################################################################
-
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+export EDITOR="nano"
+export VISUAL="geany"
+export TERM="xterm"
+export LANG="en_US.UTF-8"
+export LANGUAGE="en_US.UTF-8"
 export LD_PRELOAD=""
-export JAVA_HOME=/usr/lib/jvm/default
-export ANDROID_HOME=/opt/android-sdk
-export LC_ALL=C
-export EDITOR=nano
-export VISUAL=geany
-export TERM=xterm
-
+export JAVA_HOME="/usr/lib/jvm/default"
+export ANDROID_HOME="/opt/android-sdk"
+export USE_NINJA="false"
+export USE_CCACHE=1
+export ANDROID_JACK_VM_ARGS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4G"
 ###################################################################################################
 ########## Include my private bin dir if it exists: ###############################################
 
